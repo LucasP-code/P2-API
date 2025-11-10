@@ -5,5 +5,5 @@ Content-Type: application/json
 
 {
     "nomeDeUsuario" : "admin",
-    "senha" : "admin"
+    "senha" : "root"
 }

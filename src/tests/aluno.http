@@ -1,0 +1,37 @@
+@url = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGaWxtZXMgQVBJIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NjI4MTM5NTF9.AcxK4k2CV4oc5Bq0GPsPjvpeABdSnjG8q7H3UHxUXIM
+
+POST {{url}}/alunos
+Authorization:  Bearer {{token}}
+Content-Type: application/json
+
+{
+    "nome" : "João Silva",
+    "email" : "joao.silva@example.com",
+    "telefone" : "+5511999999999",
+    "dataMatricula" : "2023-10-10"
+}
+
+###
+GET {{url}}/alunos
+Authorization:  Bearer {{token}}
+
+###
+PUT {{url}}/alunos/1
+Authorization:  Bearer {{token}}
+Content-Type: application/json
+
+{
+    "nome" : "João Silva Atualizado",
+    "email" : "joao.silva.atualizado@example.com",
+    "telefone" : "+5511999999998",
+    "dataMatricula" : "2023-10-11"
+}
+
+###
+GET {{url}}/alunos/1
+Authorization:  Bearer {{token}}
+
+###
+DELETE {{url}}/alunos/2
+Authorization:  Bearer {{token}}
