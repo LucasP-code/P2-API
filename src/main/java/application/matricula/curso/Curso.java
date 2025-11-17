@@ -1,6 +1,6 @@
 package application.curso;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,31 +24,36 @@ public class Curso {
     @Column(name = "id_curso", nullable = false)
     private String nome;
     @Column(nullable = false)
-    private String email;
+    private String descricao;
     @Column(nullable = false)
-    private String telefone;
+    private int cargaHoraria;
     @Column(nullable = false)
-    private LocalDate dataMatricula;
+    private String status;
+    @Column(nullable = false)
+    private LocalDateTime dataCriacao;
 
-    public Curso(String nome, String email, String telefone, LocalDate dataMatricula) {
+    public Curso(String nome, String descricao, int cargaHoraria, String status, LocalDateTime dataCriacao) {
         this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
-        this.dataMatricula = dataMatricula;
+        this.descricao = descricao;
+        this.cargaHoraria = cargaHoraria;
+        this.status = status;
+        this.dataCriacao = dataCriacao;
     }
 
     public Curso(CursoDTO dados) {
         this.id = dados.id();
         this.nome = dados.nome();
-        this.email = dados.email();
-        this.telefone = dados.telefone();
-        this.dataMatricula = dados.dataMatricula();
+        this.descricao = dados.descricao();
+        this.cargaHoraria = dados.cargaHoraria();
+        this.status = dados.status();
+        this.dataCriacao = dados.dataCriacao();
     }
 
     public Curso(CursoInsertDTO dados) {
         this.nome = dados.nome();
-        this.email = dados.email();
-        this.telefone = dados.telefone();
-        this.dataMatricula = dados.dataMatricula();
+        this.descricao = dados.descricao();
+        this.cargaHoraria = dados.cargaHoraria();
+        this.status = dados.status();
+        this.dataCriacao = dados.dataCriacao();
     }
 }

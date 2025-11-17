@@ -1,4 +1,4 @@
-package application.aluno;
+package application.curso;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,27 +18,27 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 @RestController
-@RequestMapping("/alunos")
-public class AlunoController {
+@RequestMapping("/cursos")
+public class CursoController {
     @Autowired
-    private AlunoService alunoService;
+    private CursoService cursoService;
 
     @PostMapping
-    public AlunoDTO insert(@RequestBody AlunoInsertDTO novaAluno) {
-        return alunoService.insert(novaAluno);
+    public CursoDTO insert(@RequestBody CursoInsertDTO novoCurso) {
+        return cursoService.insert(novoCurso);
     }
 
     @GetMapping("/{id}")
-    public AlunoDTO getOne(@PathVariable long id) {
-        return alunoService.getOne(id);
+    public CursoDTO getOne(@PathVariable long id) {
+        return cursoService.getOne(id);
     }
 
     @GetMapping
     @Operation(summary = "Lista todas as aferições",
         description = "Retorna uma lista com todas as aferições registradas.")
     @ApiResponse(responseCode = "200", description = "Lista retornada com sucesso")
-    public Iterable<AlunoDTO> getAll() {
-        return alunoService.getAll();
+    public Iterable<CursoDTO> getAll() {
+        return cursoService.getAll();
     }
 
     @PutMapping("/{id}")
@@ -48,10 +48,10 @@ public class AlunoController {
         @ApiResponse(responseCode = "200", description = "Aferição atualizada com sucesso"),
         @ApiResponse(responseCode = "404", description = "Aferição não encontrada")
     })
-    public AlunoDTO update(
+    public CursoDTO update(
         @Parameter(description = "ID da aferição a ser atualizada")
-        @PathVariable long id, @RequestBody AlunoInsertDTO novosDados) {
-        return alunoService.update(id, novosDados);
+        @PathVariable long id, @RequestBody CursoInsertDTO novosDados) {
+        return cursoService.update(id, novosDados);
     }
 
     @DeleteMapping("/{id}")
@@ -64,6 +64,6 @@ public class AlunoController {
     public void remove(
         @Parameter(description = "ID da aferição a ser removida")
         @PathVariable long id) {
-        alunoService.delete(id);
+        cursoService.delete(id);
     }
 }

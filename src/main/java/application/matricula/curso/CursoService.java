@@ -37,14 +37,15 @@ public class CursoService {
 
         if(resultado.isEmpty()) {
             throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Curso não encontrada"
+                HttpStatus.NOT_FOUND, "Curso não encontrado"
             );
         }
 
         resultado.get().setNome(dadosCurso.nome());
-        resultado.get().setEmail(dadosCurso.email());
-        resultado.get().setTelefone(dadosCurso.telefone());
-        resultado.get().setDataMatricula(dadosCurso.dataMatricula());
+        resultado.get().setDescricao(dadosCurso.descricao());
+        resultado.get().setCargaHoraria(dadosCurso.cargaHoraria());
+        resultado.get().setStatus(dadosCurso.status());
+        resultado.get().setDataCriacao(dadosCurso.dataCriacao());
 
         return new CursoDTO(cursoRepo.save(resultado.get()));
     }
@@ -52,7 +53,7 @@ public class CursoService {
     public void delete(long id) {
         if(!cursoRepo.existsById(id)) {
             throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Curso não encontrada"
+                HttpStatus.NOT_FOUND, "Curso não encontrado"
             );
         }
         cursoRepo.deleteById(id);

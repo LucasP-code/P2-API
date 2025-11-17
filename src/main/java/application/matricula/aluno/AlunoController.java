@@ -24,8 +24,8 @@ public class AlunoController {
     private AlunoService alunoService;
 
     @PostMapping
-    public AlunoDTO insert(@RequestBody AlunoInsertDTO novaAluno) {
-        return alunoService.insert(novaAluno);
+    public AlunoDTO insert(@RequestBody AlunoInsertDTO novoAluno) {
+        return alunoService.insert(novoAluno);
     }
 
     @GetMapping("/{id}")
