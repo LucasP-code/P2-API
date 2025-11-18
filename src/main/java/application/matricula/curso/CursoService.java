@@ -1,4 +1,4 @@
-package application.curso;
+package application.matricula.curso;
 
 import java.util.Optional;
 

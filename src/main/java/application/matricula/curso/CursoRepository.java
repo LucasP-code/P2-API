@@ -1,4 +1,4 @@
-package application.curso;
+package application.matricula.curso;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

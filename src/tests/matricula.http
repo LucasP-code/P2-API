@@ -1,0 +1,27 @@
+@url = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGaWxtZXMgQVBJIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NjM0MTg5NDB9.3H19QtEBzIoV8KmS9dA60DboJNelT9Uj9FENPpT1whc
+
+POST {{url}}/matriculas
+Content-Type: application/json
+
+{
+    "idFilme": 2,
+    "idArtista": 2,
+    "idFuncao": 1
+}
+
+###
+GET {{url}}/matriculas
+
+###
+PUT {{url}}/matriculas/1
+Content-Type: application/json
+
+{
+    "idFilme": 2,
+    "idArtista": 2,
+    "idFuncao": 3
+}
+
+###
+DELETE {{url}}/matriculas/2

@@ -1,6 +1,5 @@
 package application.matricula;
 
-import application.filmes.Filme;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,11 +23,11 @@ public class Matricula {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "filme_id")
+    @JoinColumn(name = "aluno_id")
     private Aluno aluno;
 
     @ManyToOne
-    @JoinColumn(name = "artista_id")
+    @JoinColumn(name = "curso_id")
     private Curso curso;
 
     public Matricula(MatriculaDTO dados) {

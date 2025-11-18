@@ -1,4 +1,4 @@
-package application.aluno;
+package application.matricula.aluno;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
