@@ -19,17 +19,32 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/alunos")
+@Tag(name = "Alunos", description = "Operações relacionadas a alunos")
 public class AlunoController {
     @Autowired
     private AlunoService alunoService;
 
     @PostMapping
+    @Operation(summary = "Cria um novo aluno",
+        description = "Adiciona um novo aluno ao sistema com os dados fornecidos.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Aluno criado com sucesso"),
+        @ApiResponse(responseCode = "400", description = "Dados inválidos fornecidos")
+    })
     public AlunoDTO insert(@RequestBody AlunoInsertDTO novoAluno) {
         return alunoService.insert(novoAluno);
     }
 
     @GetMapping("/{id}")
-    public AlunoDTO getOne(@PathVariable long id) {
+    @Operation(summary = "Obtém uma aferição por ID",
+        description = "Retorna os detalhes de uma aferição específica com base no ID fornecido.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Aferição encontrada com sucesso"),
+        @ApiResponse(responseCode = "404", description = "Aferição não encontrada")
+    })
+    public AlunoDTO getOne(
+        @Parameter(description = "ID da aferição a ser obtida")
+        @PathVariable long id) {
         return alunoService.getOne(id);
     }
 
@@ -61,9 +76,7 @@ public class AlunoController {
         @ApiResponse(responseCode = "204", description = "Aferição removida com sucesso"),
         @ApiResponse(responseCode = "404", description = "Aferição não encontrada")
     })
-    public void remove(
-        @Parameter(description = "ID da aferição a ser removida")
-        @PathVariable long id) {
+    public void remove(@PathVariable long id) {
         alunoService.delete(id);
     }
 }

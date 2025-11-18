@@ -19,50 +19,64 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/cursos")
+@Tag(name = "Cursos", description = "Operações relacionadas a cursos")
 public class CursoController {
     @Autowired
     private CursoService cursoService;
 
     @PostMapping
+    @Operation(summary = "Cria um novo curso",
+        description = "Adiciona um novo curso ao sistema com os dados fornecidos.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Curso criado com sucesso"),
+        @ApiResponse(responseCode = "400", description = "Dados inválidos fornecidos")
+    })
     public CursoDTO insert(@RequestBody CursoInsertDTO novoCurso) {
         return cursoService.insert(novoCurso);
     }
 
     @GetMapping("/{id}")
-    public CursoDTO getOne(@PathVariable long id) {
+    @Operation(summary = "Obtém um curso pelo ID", description = "Retorna os dados de um curso específico com base no ID fornecido")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Curso encontrado com sucesso"),
+        @ApiResponse(responseCode = "404", description = "Curso não encontrado")
+    })
+    public CursoDTO getOne(
+        @Parameter(description = "ID do curso a ser obtido")
+        @PathVariable long id) {
         return cursoService.getOne(id);
     }
 
     @GetMapping
-    @Operation(summary = "Lista todas as aferições",
-        description = "Retorna uma lista com todas as aferições registradas.")
+    @Operation(summary = "Lista todos os cursos",
+        description = "Retorna uma lista com todos os cursos registrados.")
     @ApiResponse(responseCode = "200", description = "Lista retornada com sucesso")
     public Iterable<CursoDTO> getAll() {
         return cursoService.getAll();
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Atualiza aferição existente",
-        description = "Altera os dados de uma aferição já cadastrada, identificada pelo ID.")
+    @Operation(summary = "Atualiza curso existente",
+        description = "Altera os dados de um curso já cadastrado, identificado pelo ID.")
     @ApiResponses({
-        @ApiResponse(responseCode = "200", description = "Aferição atualizada com sucesso"),
-        @ApiResponse(responseCode = "404", description = "Aferição não encontrada")
+        @ApiResponse(responseCode = "200", description = "Curso atualizado com sucesso"),
+        @ApiResponse(responseCode = "404", description = "Curso não encontrado")
     })
     public CursoDTO update(
-        @Parameter(description = "ID da aferição a ser atualizada")
+        @Parameter(description = "ID do curso a ser atualizado")
         @PathVariable long id, @RequestBody CursoInsertDTO novosDados) {
         return cursoService.update(id, novosDados);
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Remove uma aferição",
-        description = "Exclui permanentemente uma aferição com base no ID informado." )
+    @Operation(summary = "Remove um curso",
+        description = "Exclui permanentemente um curso com base no ID informado." )
     @ApiResponses({
-        @ApiResponse(responseCode = "204", description = "Aferição removida com sucesso"),
-        @ApiResponse(responseCode = "404", description = "Aferição não encontrada")
+        @ApiResponse(responseCode = "204", description = "Curso removido com sucesso"),
+        @ApiResponse(responseCode = "404", description = "Curso não encontrado")
     })
     public void remove(
-        @Parameter(description = "ID da aferição a ser removida")
+        @Parameter(description = "ID do curso a ser removido")
         @PathVariable long id) {
         cursoService.delete(id);
     }

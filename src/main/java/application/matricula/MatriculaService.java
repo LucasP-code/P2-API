@@ -5,12 +5,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.stereotype.Service;
 
 import application.matricula.aluno.Aluno;
 import application.matricula.aluno.AlunoRepository;
 import application.matricula.curso.Curso;
 import application.matricula.curso.CursoRepository;
 
+@Service
 public class MatriculaService {
     @Autowired
     private MatriculaRepository matriculaRepository;

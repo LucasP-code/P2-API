@@ -1,5 +1,5 @@
 @url = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGaWxtZXMgQVBJIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NjM0MTg5NDB9.3H19QtEBzIoV8KmS9dA60DboJNelT9Uj9FENPpT1whc
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGaWxtZXMgQVBJIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3NjM1MDM2NTZ9.ksPrc7hAcUMAYrxJAII6u1zUslJ_Ry4x_XxFDpKeuuY
 
 POST {{url}}/cursos
 Authorization:  Bearer {{token}}
